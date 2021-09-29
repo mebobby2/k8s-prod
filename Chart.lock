@@ -1,0 +1,9 @@
+dependencies:
+- name: jenkins
+  repository: https://charts.jenkins.io
+  version: 3.5.16
+- name: chartmuseum
+  repository: https://charts.helm.sh/stable
+  version: 2.14.2
+digest: sha256:30e401c8288fa6626a39436edc6ed7ebbbb77c285a5de759bdc60063e7878d44
+generated: "2021-09-29T22:25:55.973822+13:00"

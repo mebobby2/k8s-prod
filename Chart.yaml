@@ -8,4 +8,4 @@ dependencies:
     repository:  https://charts.jenkins.io
   - name: chartmuseum
     repository: "@stable"
-    version: 3.1.0
+    version: 2.14.2
