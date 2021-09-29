@@ -1,0 +1,11 @@
+apiVersion: v2
+description: Production Environment
+name: prod-env
+version: 0.1.0
+dependencies:
+  - name: jenkins
+    version: 3.5.16
+    repository:  https://charts.jenkins.io
+  - name: chartmuseum
+    repository: "@stable"
+    version: 3.1.0

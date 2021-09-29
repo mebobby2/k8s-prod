@@ -1,0 +1,96 @@
+chartmuseum:
+  env:
+    open:
+      DISABLE_API: false
+      AUTH_ANONYMOUS_GET: true
+    secret:
+      BASIC_AUTH_USER: admin # Change me!
+      BASIC_AUTH_PASS: admin # Change me!
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 80m
+      memory: 64Mi
+  persistence:
+    enabled: true
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    hosts:
+      cm.192.168.99.103.nip.io: # Change me!
+      - /
+
+jenkins:
+  controller:
+    adminPassword: 'password'
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "2Gi"
+    installPlugins:
+      - blueocean
+      - credentials
+      - ec2
+      - git
+      - git-client
+      - github
+      - kubernetes
+      - pipeline-utility-steps
+      - script-security
+      - slack
+      - thinBackup
+      - workflow-aggregator
+      - ssh-slaves
+      - ssh-agent
+      - configuration-as-code
+      - trilead-api
+      - kubernetes-credentials-provider
+    installLatestPlugins: true
+    installLatestSpecifiedPlugins: true
+    ingress:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/proxy-body-size: 50m
+        nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+        ingress.kubernetes.io/ssl-redirect: "false"
+        ingress.kubernetes.io/proxy-body-size: 50m
+        ingress.kubernetes.io/proxy-request-buffering: "off"
+      hostName: jenkins.localhost.com
+    JCasC:
+      configScripts:
+        my-settings: |
+          jenkins:
+            nodes:
+              - permanent:
+                  labelString: "docker ubuntu linux"
+                  name: "docker-build"
+                  remoteFS: "/tmp"
+                  numExecutors: 2
+                  launcher:
+                    SSHLauncher:
+                      host: "10.100.198.200"
+                      port: 22
+                      credentialsId: docker-build-access-key
+                      launchTimeoutSeconds: 60
+                      maxNumRetries: 3
+                      retryWaitTime: 30
+                      sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+          unclassified:
+            globalLibraries:
+              libraries:
+                - name: "my-library"
+                  defaultVersion: "master"
+                  implicit: true
+                  retriever:
+                    modernSCM:
+                      scm:
+                        git:
+                          remote: "https://github.com/mebobby2/jenkins-shared-libraries"
+  rbac:
+    readSecrets: true
