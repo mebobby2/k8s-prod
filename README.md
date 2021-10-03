@@ -7,3 +7,14 @@ Using helm charts to manage an entire production environment, acting as a 'servi
 ## Install
 * helm dependency update --skip-refresh
 * helm install prod . --namespace prod
+
+## Uninstall
+* helm delete prod --namespace prod
+
+## Notes
+While using a Helm chart to define the entire environment is interesting, there are some limitations; You cannot specify different K8s namespaces for subcharts. Hence you cannot segregate services/components that make up an e2e working environment into different logical namespaces. For example, your entire Prod environment is made up of three namespaces:
+1. cicd
+2. monitoring
+3. core (where the application microservices are deployed to)
+
+You cannot do this with Helm dependencies (subcharts) because you can't install subcharts to different K8s namespaces. A much better tool for this sort of thing is something like helmfile: https://github.com/roboll/helmfile
