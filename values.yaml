@@ -22,12 +22,12 @@ chartmuseum:
       ingress.kubernetes.io/ssl-redirect: "false"
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
     hosts:
-    - name: cm.192.168.99.103.nip.io # Change me!
+    - name: cm.192.168.64.19.nip.io # Change me!
       path: /
 
 jenkins:
   controller:
-    adminPassword: 'password'
+    adminPassword: "password"
     resources:
       requests:
         cpu: "500m"
@@ -65,22 +65,6 @@ jenkins:
     JCasC:
       configScripts:
         my-settings: |
-          jenkins:
-            nodes:
-              - permanent:
-                  labelString: "docker ubuntu linux"
-                  name: "docker-build"
-                  remoteFS: "/tmp"
-                  numExecutors: 2
-                  launcher:
-                    SSHLauncher:
-                      host: "10.100.198.200"
-                      port: 22
-                      credentialsId: docker-build-access-key
-                      launchTimeoutSeconds: 60
-                      maxNumRetries: 3
-                      retryWaitTime: 30
-                      sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
           unclassified:
             globalLibraries:
               libraries:
