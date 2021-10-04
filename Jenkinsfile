@@ -19,7 +19,7 @@ pipeline {
   stages {
     stage("deploy") {
       when {
-        branch "master"
+        branch "main"
       }
       steps {
         container("helm") {
@@ -32,7 +32,7 @@ pipeline {
     }
     stage("test") {
       when {
-        branch "master"
+        branch "main"
       }
       steps {
         echo "Testing..."
