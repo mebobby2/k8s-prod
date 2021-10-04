@@ -5,8 +5,9 @@ Using helm charts to manage an entire production environment, acting as a 'servi
 * kubectl create ns prod
 
 ## Install
-* helm dependency update --skip-refresh
+* helm dependency update
 * helm install prod . --namespace prod
+* for updates: helm upgrade prod . --namespace prod
 
 ## Uninstall
 * helm delete prod --namespace prod

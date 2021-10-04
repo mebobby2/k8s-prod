@@ -10,5 +10,5 @@ dependencies:
     repository: "@stable"
     version: 2.14.2
   - name: go-demo-5
-    repository: chartmuseum
+    repository: "@chartmuseum"
     version: 0.0.1
