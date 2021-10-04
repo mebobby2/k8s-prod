@@ -25,7 +25,7 @@ pipeline {
         container("helm") {
           sh "helm repo add chartmuseum http://${cmAddr}"
           sh "helm repo update"
-          sh "helm dependency update"
+          sh "helm dependency update --skip-refresh"
           sh "helm upgrade -i prod --namespace prod --force"
         }
       }
