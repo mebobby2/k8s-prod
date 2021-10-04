@@ -28,7 +28,7 @@ pipeline {
           sh "helm repo add jenkins https://charts.jenkins.io"
           sh "helm repo update"
           sh "helm dependency update"
-          sh "helm upgrade -i prod . --namespace prod --force"
+          sh "helm upgrade -i prod . --namespace prod"
         }
       }
     }
