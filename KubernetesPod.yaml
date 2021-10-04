@@ -3,6 +3,6 @@ kind: Pod
 spec:
   containers:
   - name: helm
-    image: vfarcic/helm:3.0.2
+    image: mebobby/helm:3.6.3
     command: ["cat"]
     tty: true
