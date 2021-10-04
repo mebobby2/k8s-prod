@@ -1,3 +1,7 @@
+go-demo-5:
+  ingress:
+    host: go-emo-5.192.168.99.104.nip.io
+
 chartmuseum:
   env:
     open:
