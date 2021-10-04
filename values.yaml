@@ -22,7 +22,7 @@ chartmuseum:
       ingress.kubernetes.io/ssl-redirect: "false"
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
     hosts:
-    - name: cm.192.168.64.19.nip.io # Change me!
+    - name: cm.192.168.99.104.nip.io # Change me!
       path: /
 
 jenkins:
