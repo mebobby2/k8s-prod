@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Production Environment
 name: prod-env
-version: 0.1.0
+version: 0.2.0
 dependencies:
   - name: jenkins
     version: 3.5.16
@@ -11,4 +11,4 @@ dependencies:
     version: 2.14.2
   - name: go-demo-5
     repository: "@chartmuseum"
-    version: 0.0.1
+    version: 0.0.2
