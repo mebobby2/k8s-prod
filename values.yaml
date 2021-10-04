@@ -1,4 +1,6 @@
 go-demo-5:
+  replicaCount: 1
+  dbReplicaCount: 1
   ingress:
     host: go-demo-5.192.168.99.104.nip.io
 
